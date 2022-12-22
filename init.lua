@@ -22,3 +22,5 @@ require("lazy").setup("conf.plugins", {
 		},
 	},
 })
+
+vim.cmd.colorscheme("tokyonight")
