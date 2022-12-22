@@ -14,6 +14,23 @@ end
 -- Add lazy.nvim to rtp
 vim.opt.runtimepath:prepend(lazypath)
 
+if pcall(require, "hotpot") then
+	-- Initialize hotpot
+	require("hotpot").setup({
+		provide_require_fennel = true,
+		enable_hotpot_diagnostics = false,
+	})
+else
+	vim.notify(
+		table.concat({
+			"Plugin `hotpot.nvim` could not be required.",
+			"Make sure that hotpot is installed using `:Lazy`.",
+			"The configuration won't be loaded.",
+		}, "\n"),
+		vim.log.levels.WARN
+	)
+end
+
 -- Configure lazy.nvim
 require("lazy").setup("conf.plugins", {
 	performance = {
